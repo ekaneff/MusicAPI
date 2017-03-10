@@ -19,8 +19,10 @@ class Controller {
 		//hide list 
 		$('#myList').hide();
 
-		this.myList = JSON.parse(localStorage.getItem("myList"));
-		console.log(this.myList);
+		if ( !localStorage.getItem("myList") == null) {
+			this.myList = JSON.parse(localStorage.getItem("myList"));
+			console.log(this.myList);
+		}
 		//go button event listener
 		document.getElementById("go").addEventListener("click", (e) => {
 			e.preventDefault();
