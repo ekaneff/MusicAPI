@@ -11,7 +11,7 @@ if [ ! -d "$DIRECTORY" ]; then
 	git init --bare
 	cd /var
 
-	cd /var/repos musicapi.git/hooks
+	cd /var/repos/musicapi.git/hooks
 
 	touch post-receive
 	chmod +x post-receive
