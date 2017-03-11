@@ -2,11 +2,11 @@ server {
     listen 80 default_server;
     listen [::]:80 default_server;
 
-    root /var/www/html/musicapi;
+    root /var/www/html/{{project}};
 
     index index.html index.nginx-debian.html;
 
-    server_name music.{{stage_ip}}.xip.io;
+    server_name music.{{ip}}.xip.io;
 
     location / {
         try_files $uri $uri/ =404;

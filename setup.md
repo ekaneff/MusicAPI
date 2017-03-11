@@ -1,15 +1,7 @@
-# Setup for PHP Project: Pipeline One (Multiple Pipelines Assignment)
+# Set Up For Serving Static Projects to a Digital Ocean Droplet with CodeShip and Ansible
 #### By Emily Kaneff
 
-This repository is one of three that are part of a multiple pipeline deployment system made with Ansible. The set up and deployment process will be mostly the same in some aspects, but different enough that it is important for you to go through each one carefully and thoroughly as to not leave out any important pieces. 
 
-For this project repository, we will be using Wordpress to demonstrate the set up and deployment of PHP applications using this pipeline system.
-
->Note: You do not have to install these repositories in order, nor do you need to use them all for the pipeline to work. If you have already followed the setup guide for another repository, you can skip to the [Running the Ansible Playbook](#three) section.
-
->This is only one of the three pipelines feeding into our servers. The others with setup and deployment instructions can be found at: <br>
->[https://github.com/ekaneff/wk2-static](https://github.com/ekaneff/wk2-static) <br>
->[https://github.com/ekaneff/wk2-node](https://github.com/ekaneff/wk2-node)
 
 ##Table of Contents
 * [Set up the VPS](#one)
@@ -51,8 +43,6 @@ Before running the playbook command, there are a few minor adjustments that need
 
 Open the `hosts` file and place the IP address of your Staging and Production servers within that file. Also, under `roles/nginx/vars`, change the variable `stage_ip` to equal that staging IP address.
 
->If you would like to change the database name, database user and password that will be set up for Maria, the variables can be found in `/roles/maria/vars`
-
 With both those files in place, we can now execute the playbook commands.
 
 The first command you will need to run is: 
@@ -71,13 +61,11 @@ If your keys were successful, you should see two success messages about `python`
 The last command you will need to run for this playbook is:
 
 ```shell
-ansible-playbook --private-key=~/.ssh/[your ssh key name] -i ./hosts php.yml
+ansible-playbook --private-key=~/.ssh/[your ssh key name] -i ./hosts static.yml
 ```
 This will begin executing the roles and installing the necessary dependancies to your server. 
 
-This playbook automates the installation and configuration of Nginx and it's server blocks, MariaDB with a new database and user with permissions, PHP7, and Wordpress. It also creates a folder for this project in `/var/www/html` along with a remote bare repository with a post-receive hook in place to handle the files we send from our local machines.
-
-You should now be able to go to `php.[your staging IP].xip.io` and be greeted with the Wordpress installation page. 
+This playbook automates the installation and configuration of Nginx and it's server blocks. It also creates a folder for this project in `/var/www/html` along with a remote bare repository with a post-receive hook in place to handle the files we send from our local machines.
 
 >The IP for the production server is something we will have to implement later. For now, only include it in your `hosts` file.
 
