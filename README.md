@@ -44,4 +44,4 @@ If anything goes wrong, CodeShip will notify you of what happened and when in th
 
 What CodeShip does is it will clone down a copy of the repository into a `clone` folder, and then from there it will copy that code base to the specified location in the deployment script, that being `rsync` in our case. 
 
-If CodeShip doesn't error out, then the file transfer happened successfully! You can now open your project in the browser at the IP of the server or the specified domain name laid out in the server configuration files in both the staging and production roles. s
+If CodeShip doesn't error out, then the file transfer happened successfully! You can now open your project in the browser at the IP of the server or the specified domain name laid out in the server configuration files in both the staging and production roles.
