@@ -43,6 +43,8 @@ Open the `hosts` file and place the IP address of your Staging and Production se
 
 Also be sure to change the name of the `project` variable located in `vars` in both the Staging and Production roles to whatever is suited for your project (in this case, it is `musicapi`). Change the name of the file located in the `templates` folder in both the Production and Staging roles to match that project name keeping the extension of `.j2`. 
 
+Within each of the `.j2` files in both the Staging and Production roles, change the prefix of the `server_name` to be something relevant to the project. This subdomain is what allows us to have multiple projects running on the same server. 
+
 Finally, you will need to go into `setup.sh` and change the name of the directory that will be created to match the name of the project you set in the `vars` files. 
 
 With the set up I have laid out in these scripts, ansible will be running three playbooks. You can view these in the main `.yml` file located in the root of the directory (for this project, it is titled `musicapi.yml`). 
