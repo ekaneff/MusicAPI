@@ -11,15 +11,7 @@ gulp.task('add', function() {
 		.pipe(git.commit(argv.m));
 });
 
-// gulp.task('add',['gitAdd'],function() {
-//   console.log('commiting...');
-//   if (argv.m) {
-//     return gulp.src('.')
-//       .pipe(git.commit(argv.m));
-//   }
-// });
-
-gulp.task('push', ['add', 'checkoutDevelop'],function(){
+gulp.task('push', ['checkoutDevelop'],function(){
   console.log('pushing to origin dev');
   git.push('origin', 'dev', function (err) {
     if (err) throw err;
@@ -48,7 +40,6 @@ gulp.task('checkoutDevelop', function(){
 
 gulp.task('default', ['checkoutReleaseCreate', 'checkoutDevelopCreate']);
 
-//gulp.task('send', ['gitAdd','gitCommit', 'checkoutDevelop', 'gitPush']);
 
 
 
