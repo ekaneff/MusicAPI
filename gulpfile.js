@@ -3,22 +3,23 @@ var git = require('gulp-git');
 var argv = require('yargs').argv;
 var gitignore = require('gulp-gitignore');
 
-gulp.task('gitAdd', function() {
-	console.log('adding...')
+gulp.task('add', function() {
+	console.log('adding and committing...')
 	return gulp.src('.')
 		.pipe(gitignore())
-		.pipe(git.add());
+		.pipe(git.add())
+		.pipe(git.commit(argv.m));
 });
 
-gulp.task('add',['gitAdd'],function() {
-  console.log('commiting...');
-  if (argv.m) {
-    return gulp.src('.')
-      .pipe(git.commit(argv.m));
-  }
-});
+// gulp.task('add',['gitAdd'],function() {
+//   console.log('commiting...');
+//   if (argv.m) {
+//     return gulp.src('.')
+//       .pipe(git.commit(argv.m));
+//   }
+// });
 
-gulp.task('gitPush',function(){
+gulp.task('push', ['add', 'checkoutDevelop'],function(){
   console.log('pushing to origin dev');
   git.push('origin', 'dev', function (err) {
     if (err) throw err;
@@ -47,7 +48,7 @@ gulp.task('checkoutDevelop', function(){
 
 gulp.task('default', ['checkoutReleaseCreate', 'checkoutDevelopCreate']);
 
-gulp.task('send', ['gitAdd','gitCommit', 'checkoutDevelop', 'gitPush']);
+//gulp.task('send', ['gitAdd','gitCommit', 'checkoutDevelop', 'gitPush']);
 
 
 
