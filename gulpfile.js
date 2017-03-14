@@ -19,7 +19,7 @@ gulp.task('commit', function() {
 });
 
 gulp.task('push', function(){
-  console.log('pushing to ' + argv.b);
+  console.log('pushing to origin ' + argv.b);
   git.push('origin', argv.b, function (err) {
     if (err) throw err;
   });
