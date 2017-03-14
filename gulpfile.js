@@ -10,7 +10,7 @@ gulp.task('gitAdd', function() {
 		.pipe(git.add());
 });
 
-gulp.task('gitCommit', function() {
+gulp.task('gitCommit', ['gitAdd'],function() {
   console.log('commiting...');
   if (argv.m) {
     return gulp.src('.')
@@ -39,7 +39,7 @@ gulp.task('checkoutDevelop', function(){
 
 gulp.task('default', ['checkoutRelease', 'checkoutDevelop']);
 
-gulp.task('add', ['gitAdd', 'gitCommit']);
+gulp.task('add', ['gitCommit']);
 
 gulp.task('send', ['gitAdd', 'gitCommit', 'gitPush']);
 
