@@ -11,13 +11,6 @@ gulp.task('add', function() {
 		.pipe(git.commit(argv.m));
 });
 
-gulp.task('push', ['checkoutDevelop'],function(){
-  console.log('pushing to origin dev');
-  git.push('origin', 'dev', function (err) {
-    if (err) throw err;
-  });
-});
-
 gulp.task('checkoutReleaseCreate', function(){
   git.checkout('release', {args:'-b'}, function (err) {
     if (err) throw err;
@@ -27,13 +20,6 @@ gulp.task('checkoutReleaseCreate', function(){
 gulp.task('checkoutDevelopCreate', function(){
 	console.log('Checkout to new dev branch');
   git.checkout('dev', {args:'-b'}, function (err) {
-    if (err) throw err;
-  });
-});
-
-gulp.task('checkoutDevelop', function(){
-	console.log('Checkout to dev branch');
-  git.checkout('dev', function (err) {
     if (err) throw err;
   });
 });
