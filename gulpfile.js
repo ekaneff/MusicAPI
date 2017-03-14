@@ -37,7 +37,6 @@ gulp.task('checkoutDevelop', function(){
   });
 });
 
-
 gulp.task('default', ['checkoutRelease', 'checkoutDevelop']);
 
 gulp.task('add', ['gitAdd', 'gitCommit']);
