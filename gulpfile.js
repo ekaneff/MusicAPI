@@ -18,7 +18,7 @@ gulp.task('gitCommit', ['gitAdd'],function() {
   }
 });
 
-gulp.task('gitPush', function(){
+gulp.task('gitPush', ['gitCommit'],function(){
   console.log('pushing to origin ' + 'dev');
   git.push('origin', 'dev', function (err) {
     if (err) throw err;
@@ -41,7 +41,7 @@ gulp.task('default', ['checkoutRelease', 'checkoutDevelop']);
 
 gulp.task('add', ['gitCommit']);
 
-gulp.task('send', ['gitAdd', 'gitCommit', 'gitPush']);
+gulp.task('send', ['gitPush']);
 
 
 
