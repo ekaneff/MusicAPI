@@ -6,7 +6,6 @@
 * [Installing Ansible](#two)
 * [Running the Ansible Playbook](#three)
 * [Setup for CodeShip](#four)
-* [Using Gulp for Git](#five)
 
 <a name="one"></a>
 ## Step One: Set up the VPS
@@ -134,25 +133,3 @@ cd .ssh
 Then `nano` into the `authorized_keys` file and paste the key into the file. Save and exit the file, then `exit` out of your server. 
 
 Once that is finished, you are ready to begin pushing files to your repository. That process will be outlined in the [README.md](README.md) of this repository. 
-
-<a name="five"></a>
-## Step Five: Using Gulp for Git
-
-To make your workflow just a little bit easier, included in the repository is a `gulpfile` that can be used to make some initial git setup and git commands go by a little quicker. 
-
-Since Gulp is a Node package, we need to install it using `npm` into our project. The `package.json` with the needed dependancies is already in the repo, to install Gulp and the other necessary packages, you can simply run: 
-
-```shell
-npm install
-```
-
-Once that finishes, if you are still located on your master branch, you can run the command `gulp` in your terminal and the Gulp tasks will create a release and development branch for you, preparing you for your feature branch workflow. 
-
-Then, throughout your development process, instead of running the commands `git add` and `git commit`, you can simply run: 
-
-```shell
-gulp add --m [you commit message]
-```
-> After you run this command, run `git status` to double check that things were committed correctly. If it errors out and you still see the files as staged, try running the `gulp add` command again. 
-
-This is meant to help take away some of the more repetitive tasks needed when doing a proper git workflow, and leaves less room for human error. 
